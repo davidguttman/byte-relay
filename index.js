@@ -1,10 +1,9 @@
 const cors = require('cors')
 const express = require('express')
-const SseStream = require('ssestream')
 const bodyParser = require('body-parser')
 
-
 const Events = require('./events')
+const SseStream = require('./ssestream')
 
 const PORT = process.env.PORT || 3000
 
