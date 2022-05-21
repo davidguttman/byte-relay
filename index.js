@@ -39,9 +39,11 @@ function subscribe (req, res) {
 }
 
 function announce (req, res) {
+  console.log(req.headers)
   res.sendStatus(201)
   res.end()
   const key = req.params.key
-  const message = req.body.toString('hex')
+  console.log('req.body', req.body)
+  const message = req.body.toString()
   Events.signal({ key, message })
 }
