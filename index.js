@@ -18,6 +18,7 @@ app.listen(PORT)
 console.log('Server listening on port', PORT)
 
 function subscribe (req, res) {
+  res.header('X-Accel-Buffering', 'no')
   const key = req.params.key
   console.log('new connection', key)
 
