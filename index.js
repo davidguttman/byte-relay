@@ -1,3 +1,5 @@
+require('productionize')('byte-relay')
+
 const cors = require('cors')
 const express = require('express')
 const bodyParser = require('body-parser')
@@ -10,7 +12,7 @@ const PORT = process.env.PORT || 3000
 const app = express()
 
 app.use(cors())
-app.use(bodyParser.raw({ type: '*/*' }))
+app.use(bodyParser.raw({ type: '*/*', limit: '1mb' }))
 app.get('/:key', subscribe)
 app.post('/:key', announce)
 
@@ -34,17 +36,17 @@ function subscribe (req, res) {
   })
 
   function onData (data) {
-    console.log('data', data)
+    // console.log('data', data)
     sseStream.write({data})
   }
 }
 
 function announce (req, res) {
-  console.log(req.headers)
   res.sendStatus(201)
   res.end()
   const key = req.params.key
-  console.log('req.body', req.body)
+  // console.log('req.body', req.body)
   const message = req.body.toString()
+  console.log(key, message.length)
   Events.signal({ key, message })
 }
