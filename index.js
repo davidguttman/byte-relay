@@ -3,6 +3,7 @@ require('productionize')('byte-relay')
 const cors = require('cors')
 const express = require('express')
 const bodyParser = require('body-parser')
+const healthpoint = require('healthpoint')
 
 const Events = require('./events')
 const SseStream = require('./ssestream')
@@ -13,6 +14,7 @@ const app = express()
 
 app.use(cors())
 app.use(bodyParser.raw({ type: '*/*', limit: '1mb' }))
+app.use('/health', healthpoint())
 app.get('/:key', subscribe)
 app.post('/:key', announce)
 
