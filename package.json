@@ -18,5 +18,8 @@
     "productionize": "^4.1.0",
     "redis": "^3.1.2"
   },
-  "description": ""
+  "description": "",
+  "engines": {
+    "node": ">=24.22.1 <25"
+  }
 }
