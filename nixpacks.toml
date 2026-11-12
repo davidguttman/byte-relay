@@ -1,5 +1,8 @@
 
 
+[phases.install]
+cmds = ["npm ci --omit=dev --ignore-scripts"]
+
 [phases.setup]
 # Install the checksum-pinned upstream security release before dependencies.
 aptPkgs = ["...", "ca-certificates", "curl", "xz-utils"]

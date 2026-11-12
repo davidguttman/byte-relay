@@ -1,0 +1,9 @@
+**
+!package.json
+!package-lock.json
+!app.js
+!config.js
+!events.js
+!index.js
+!ssestream.js
+!Dockerfile
